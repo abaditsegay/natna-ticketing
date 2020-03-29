@@ -1,0 +1,29 @@
+<div class="row" style="text-align: center;letter-spacing: 15px;"><h3>Upcoming Concerts</h3></div>
+<hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+<div *ngFor = " let event of concertEvents; index as i" class="row event-detail">
+      <div class="row event-horizontal-align">
+        <div class="col-lg-4">
+          <div>
+            <img src="{{ event.imagePath}}" class="event-image"
+              alt="Sport image here">
+          </div>
+      </div>
+      <div class="col-lg-4">
+				<div>
+					<div>Event name: {{ event.name }}</div>
+					<div>Location: {{ event.location }}</div>
+					<div>Date and time: {{ event.date}}</div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4">
+				<div>
+					<div>
+						<button class="btn btn-secondary btn-success active" role="button">Book Ticket</button>
+					</div>
+        </div>
+      </div>  
+    </div>
+    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
+</div>
+

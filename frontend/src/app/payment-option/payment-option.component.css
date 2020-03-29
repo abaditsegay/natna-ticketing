@@ -1,0 +1,11 @@
+.paymen-option-box {
+    align-items: center; 
+    display: flex; 
+    border: solid 1px black;
+}
+
+.paymen-option-box p {
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+}

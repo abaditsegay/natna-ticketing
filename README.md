@@ -1,1 +1,1 @@
-# natna-ticketing
+# event-ticketing

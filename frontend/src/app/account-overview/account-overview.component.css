@@ -1,0 +1,9 @@
+.jumbotron {
+    width: 90%;
+    margin: auto;
+    padding: 15px;
+    background-color: aliceblue;
+}
+.jumbotron p {
+    font-size: 18px;
+}

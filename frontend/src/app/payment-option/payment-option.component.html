@@ -1,0 +1,102 @@
+<!-- Modal -->
+<div class="modal fade" id="paymentOptionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog  modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header modal-header-color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Payment Options</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row paymen-option-box">
+          <div class="col-md-12">
+            <p>Bank details for Buying Event Tickets</p>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="paymentOptionFullName" class="col-sm-4 control-label">Full Name </label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="paymentOptionFullName" placeholder="Full Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="paymentOptionankName" class="col-sm-4 control-label">Bank Account</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="paymentOptionBankName" placeholder="Bank Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="paymentOptionBranch" class="col-sm-4 control-label">Branch Opened</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="paymentOptionBranch" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="paymentOptionAccountNumber" class="col-sm-4 control-label">Account Number</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="paymentOptionAccountNumber" placeholder="Account Number">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="paymentOptionConfirmAccountNumber" class="col-sm-4 control-label">Confirm Account Number</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="paymentOptionConfirmAccountNumber" placeholder="Confirm Account Number">
+                </div>
+              </div>
+              <div class="form-group" style="text-align: center;">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" (click)="addPaymentOptions()" class="btn btn-primary">Add</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+          <div class="row paymen-option-box">
+          <div class="col-md-12">
+            <p>Bank details for Selling Event Tickets</p>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="fullName" class="col-sm-4 control-label">Full Name </label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="fullName" placeholder="Full Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="bankName" class="col-sm-4 control-label">Bank Account</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="bankName" placeholder="Bank Name">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="branch" class="col-sm-4 control-label">Branch Opened</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="branch" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="accountNumber" class="col-sm-4 control-label">Account Number</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="accountNumber" placeholder="Account Number">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="confirmAccountNumber" class="col-sm-4 control-label">Confirm Account Number</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="confirmAccountNumber" placeholder="Confirm Account Number">
+                </div>
+              </div>
+              <div class="form-group" style="text-align: center;">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" (click)="addPaymentOptions()" class="btn btn-primary">Add</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-primary" data-dismiss="modal">sign In</button>-->
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

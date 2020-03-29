@@ -1,0 +1,62 @@
+
+<div class="row" style="text-align: center;letter-spacing: 15px;"><h3>Upcoming Events</h3></div>
+<div class="row" style="text-align: center;">
+	<br>
+	<div class="col-6 col-sm-6 col-lg-4">
+		<h4>Sports</h4>
+		<div *ngFor = " let event of sportEvents; index as i" class="row event-detail">
+				<div>
+					<img src="{{ event.imagePath}}" class="event-image"
+						alt="Sport image here">
+				</div>
+				<div>
+					<div>Event name: {{ event.name }}</div>
+					<div>Location: {{ event.location }}</div>
+					<div>Date and time: {{ event.date}}</div>
+					<div>
+			<!-- 			<button class="btn btn-primary btn-sm btn-block">Info</button> -->
+						<a href="#" class="btn btn-secondary btn-sm active" role="button">Info</a>
+					</div>
+				</div>
+		</div>
+	</div>
+	<div class="col-6 col-sm-6 col-lg-4">
+		<h4>Concerts</h4>
+		<div *ngFor = " let event of concertEvents; index as i" class="row event-detail">
+			<div>
+				<img src="{{ event.imagePath}}" class="event-image"
+					alt="Sport image here">
+			</div>
+			<div>
+				<div>Event name: {{ event.name }}</div>
+				<div>Location: {{ event.location }}</div>
+				<div>Date and time: {{ event.date}}</div>
+				<div>
+		<!-- 			<button class="btn btn-primary btn-sm btn-block">Info</button> -->
+					<a href="#" class="btn btn-secondary btn-sm active" role="button">Info</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-6 col-sm-6 col-lg-4">
+		<h4>Theaters</h4>
+		<div *ngFor = " let event of theaterEvents; index as i" class="row event-detail">
+			<div>
+				<img src="{{ event.imagePath}}" class="event-image"
+					alt="Sport image here">
+			</div>
+			<div>
+				<div>Event name: {{ event.name }}</div>
+				<div>Location: {{ event.location }}</div>
+				<div>Date and time: {{ event.date}}</div>
+				<div>
+		<!-- 			<button class="btn btn-primary btn-sm btn-block">Info</button> -->
+					<a href="#" class="btn btn-secondary btn-sm active" role="button">Info</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/col-->
+</div>
+<!--/span-->
+
