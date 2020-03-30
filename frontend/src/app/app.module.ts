@@ -20,6 +20,13 @@ import { EventRegistrationComponent } from './event-registration/event-registrat
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { PurchasePolicyComponent } from './purchase-policy/purchase-policy.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FaqComponent } from './faq/faq.component';
+import { CareersComponent } from './careers/careers.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +46,14 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     EventRegistrationComponent,
     AccountSettingsComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AboutUsComponent,
+    TermsOfUseComponent,
+    PrivacyPolicyComponent,
+    PurchasePolicyComponent,
+    ContactUsComponent,
+    FaqComponent,
+    CareersComponent
   ],
   imports: [
     BrowserModule,
