@@ -11,4 +11,5 @@ export class AppComponent {
   searchEvents(searchCriteria) {
     console.log(searchCriteria);
   }
+
 }
