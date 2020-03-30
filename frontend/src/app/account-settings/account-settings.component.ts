@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountSettingsComponent  {
 
-  updateAccountDetail(){
-    console.log("Account Detail updated successfully");
+  updateAccountDetail(accountSettingsItem){
+    console.log(accountSettingsItem);
   }
+
+  //Static List of Regions
+  listOfRegions = ["Tigray","Amara","Afar","Oromia", "Somalia","Gambela"]
 }
