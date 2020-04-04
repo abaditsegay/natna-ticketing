@@ -1,3 +1,4 @@
+import { FaqComponent } from './faq/faq.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -7,7 +8,7 @@ import { ConcertsComponent } from './concerts/concerts.component';
 import { TheatersComponent } from './theaters/theaters.component';
 import { AccountOverviewComponent } from './account-overview/account-overview.component';
 import { EventRegistrationComponent } from './event-registration/event-registration.component';
-
+import { CareersComponent } from './careers/careers.component';
 const routes : Routes = [
       {
         path: '',
@@ -32,6 +33,14 @@ const routes : Routes = [
       {
         path: 'eventregistration',
         component: EventRegistrationComponent
+      },
+      {
+        path: 'careers',
+        component: CareersComponent
+      },
+      {
+        path: 'faq',
+        component: FaqComponent
       },
       {
         path: '', 
