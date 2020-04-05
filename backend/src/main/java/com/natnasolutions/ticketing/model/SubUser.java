@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,12 +15,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "SubUser")
-public class SubUser extends BaseEntity implements Serializable {
+@EntityListeners(AuditingEntityListener.class)
+public class SubUser extends BaseEntity<String> implements Serializable {
 
 	private static final long serialVersionUID = -1305947636364483475L;
 

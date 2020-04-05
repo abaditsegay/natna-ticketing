@@ -17,4 +17,8 @@ public final class EnConstants {
 	public static final String TITLE = "title";
 	public static final String AUTHOR = "author";
 
+	public static final String SUCCESS_CODE = "00";
+	public static final String VALIDATION_FAILURE_CODE = "01";
+	public static final String BACKEND_FAILURE_CODE = "02";
+
 }

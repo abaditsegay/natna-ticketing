@@ -28,7 +28,7 @@ import lombok.Data;
 @Entity
 @Table(name = "User")
 @EntityListeners(AuditingEntityListener.class)
-public class User extends BaseEntity implements Serializable {
+public class User extends BaseEntity<String> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,13 +39,16 @@ public class User extends BaseEntity implements Serializable {
 	private String password;
 
 	@Transient
+	private String role;
+
+	@Transient
 	private String passwordConfirm;
 
 	@Transient
 	private String passwordOld;
 
 	@Column(name = "enabled", nullable = false)
-	private boolean enabled;
+	private boolean enabled = true;
 
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "UserAndRole", joinColumns = { @JoinColumn(name = "userId") }, inverseJoinColumns = {
@@ -57,15 +60,13 @@ public class User extends BaseEntity implements Serializable {
 	@JsonIgnore
 	private List<SubUser> subUsers = new ArrayList<>();
 
-	public void addSubUser(SubUser subUser) {
-		subUsers.add(subUser);
-		subUser.setUser(this);
-	}
-
-	public void removeSubUser(SubUser subUser) {
-		subUsers.remove(subUser);
-		subUser.setUser(this);
-	}
+	/*
+	 * public void addSubUser(SubUser subUser) { subUsers.add(subUser);
+	 * subUser.setUser(this); }
+	 * 
+	 * public void removeSubUser(SubUser subUser) { subUsers.remove(subUser);
+	 * subUser.setUser(this); }
+	 */
 
 	public void addRole(Role role) {
 		roles.add(role);

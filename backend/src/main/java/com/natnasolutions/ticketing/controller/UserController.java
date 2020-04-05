@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -14,10 +15,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.natnasolutions.ticketing.model.User;
 import com.natnasolutions.ticketing.service.UserService;
+import com.natnasolutions.ticketing.util.EnConstants;
+import com.natnasolutions.ticketing.util.ResponseDetails;
 
 @RestController
 public class UserController {
@@ -32,8 +36,15 @@ public class UserController {
 	}
 
 	@PostMapping(path = "/user")
-	public HttpStatus insertUser(@RequestBody User user) {
-		return userService.addUser(user) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
+	public ResponseDetails insertUser(@RequestBody User user) {
+		boolean response = userService.addUser(user);
+		ResponseDetails responseDetails = null;
+		if (response) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, "User was created succesfully");
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, "User was not created succesfully");
+		}
+
 	}
 
 	@PutMapping(path = "/user")
