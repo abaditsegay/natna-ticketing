@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean addUser(User user) {
-		Optional<Role> userRole = userRoleService.getUsereRoleByType(user.getRole());
-		user.addRole(userRole.get());
+		List<Role> userRole = userRoleService.getUsereRoleByType(user.getRole());
+		user.addRole(userRole.get(0));
 
 		return userRepository.save(user) != null;
 	}

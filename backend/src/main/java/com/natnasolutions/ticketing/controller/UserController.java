@@ -38,11 +38,10 @@ public class UserController {
 	@PostMapping(path = "/user")
 	public ResponseDetails insertUser(@RequestBody User user) {
 		boolean response = userService.addUser(user);
-		ResponseDetails responseDetails = null;
 		if (response) {
-			return new ResponseDetails(EnConstants.SUCCESS_CODE, "User was created succesfully");
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
 		} else {
-			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, "User was not created succesfully");
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
 		}
 
 	}

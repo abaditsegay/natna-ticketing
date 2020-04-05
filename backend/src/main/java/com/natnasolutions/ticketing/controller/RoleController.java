@@ -1,5 +1,6 @@
 package com.natnasolutions.ticketing.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.natnasolutions.ticketing.model.User;
 import com.natnasolutions.ticketing.model.Role;
 import com.natnasolutions.ticketing.service.RoleService;
+import com.natnasolutions.ticketing.util.EnConstants;
 import com.natnasolutions.ticketing.util.RecordAlreadyFoundException;
+import com.natnasolutions.ticketing.util.ResponseDetails;
 
 @RestController
 public class RoleController {
@@ -47,18 +50,36 @@ public class RoleController {
 	private RoleService roleService;
 
 	@GetMapping(path = "/role")
-	public List<Role> getAll() {
-		return roleService.getAllUserRoles();
+	public ResponseDetails getAll() {
+		List<Role> roleList = roleService.getAllUserRoles();
+		if (roleList != null) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, roleList);
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		}
+
 	}
 
 	@PostMapping(path = "/role")
-	public HttpStatus insertUserRole(@RequestBody @Valid Role role) {
-		return roleService.addUserRole(role) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
+	public ResponseDetails insertUserRole(@RequestBody @Valid Role role) {
+		boolean response = roleService.addUserRole(role);
+		if (response) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		}
+
 	}
 
 	@PutMapping(path = "/role")
-	public HttpStatus updateUserRole(@RequestBody Role role) {
-		return roleService.updateUserRole(role) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
+	public ResponseDetails updateUserRole(@RequestBody Role role) {
+		boolean response = roleService.updateUserRole(role);
+		if (response) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		}
+
 	}
 
 	@DeleteMapping(path = "/role/{id}")
@@ -73,8 +94,13 @@ public class RoleController {
 	}
 
 	@GetMapping(path = "/role/roletype/{roletype}")
-	public Optional<Role> getUsereRoleByType(@PathVariable("roletype") String roletype) {
-		return roleService.getUsereRoleByType(roletype);
+	public ResponseDetails getUsereRoleByType(@PathVariable("roletype") String roletype) {
+		List<Role> roleList = roleService.getUsereRoleByType(roletype);
+		if (roleList.size() > 0) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, roleList);
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		}
 	}
 
 }
