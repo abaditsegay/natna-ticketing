@@ -24,5 +24,7 @@ public class SpringBootWebApplication extends SpringBootServletInitializer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
+	
+	
 
 }
