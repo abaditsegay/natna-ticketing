@@ -17,6 +17,6 @@ public interface RoleService {
 
 	public Optional<Role> getUserRole(Long id);
 
-	public Optional<Role> getUsereRoleByType(String roletype);
+	public List<Role> getUsereRoleByType(String roletype);
 
 }
