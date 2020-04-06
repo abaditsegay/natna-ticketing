@@ -52,9 +52,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> findByName(String email) {
+		List<User> users = userRepository.getUserbyEmail(email);
+
+		return users;
 	}
 
 	@Override
