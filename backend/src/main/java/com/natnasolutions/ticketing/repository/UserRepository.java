@@ -18,4 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Query(value = "SELECT * FROM user WHERE username = :username AND password = :password", nativeQuery = true)
 	public List<User> authenticateUser(@Param("username") String username, @Param("password") String password);
 
+	@Query(value = "SELECT * FROM user WHERE username = :email", nativeQuery = true)
+	public List<User> getUserbyEmail(String email);
+
 }

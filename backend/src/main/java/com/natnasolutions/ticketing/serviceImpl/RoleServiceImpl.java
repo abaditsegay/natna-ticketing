@@ -43,10 +43,10 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Optional<Role> getUsereRoleByType(String roletype) {
+	public List<Role> getUsereRoleByType(String roletype) {
 		List<Role> userRoles = userRoleRepository.getUserRoles(roletype);
 
-		return userRoles.stream().findFirst();
+		return userRoles;
 
 	}
 

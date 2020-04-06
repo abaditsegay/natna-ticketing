@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean addUser(User user) {
-		Optional<Role> userRole = userRoleService.getUsereRoleByType(user.getRole());
-		user.addRole(userRole.get());
+		List<Role> userRole = userRoleService.getUsereRoleByType(user.getRole());
+		user.addRole(userRole.get(0));
 
 		return userRepository.save(user) != null;
 	}
@@ -52,9 +52,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> findByName(String email) {
+		List<User> users = userRepository.getUserbyEmail(email);
+
+		return users;
 	}
 
 	@Override

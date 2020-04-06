@@ -14,7 +14,7 @@ import com.natnasolutions.ticketing.model.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
-	@Query(value = "SELECT * FROM userrole WHERE roleType = :roleType", nativeQuery = true)
-	public List<Role> getUserRoles(@Param("roleType") String roleType);
+	@Query(value = "SELECT * FROM role WHERE roleType = :roletype", nativeQuery = true)
+	public List<Role> getUserRoles(@Param("roletype") String roleType);
 
 }
