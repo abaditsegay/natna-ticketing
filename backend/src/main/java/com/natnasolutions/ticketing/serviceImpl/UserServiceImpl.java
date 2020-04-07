@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.natnasolutions.ticketing.model.User;
 import com.natnasolutions.ticketing.model.Role;
+import com.natnasolutions.ticketing.model.User;
 import com.natnasolutions.ticketing.repository.UserRepository;
-import com.natnasolutions.ticketing.repository.RoleRepository;
 import com.natnasolutions.ticketing.service.RoleService;
 import com.natnasolutions.ticketing.service.UserService;
 
@@ -53,9 +52,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> findByName(String email) {
-		List<User> users = userRepository.getUserbyEmail(email);
-
-		return users;
+		return userRepository.getUserbyEmail(email);
 	}
 
 	@Override
@@ -70,15 +67,30 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String forgotPassword(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean forgotPassword(String email) {
+		List<User> userList = findByName(email);
+		if (userList.isEmpty()) {
+			return false;
+		} else {
+			// making an async call service to send an email to the use
+			return true;
+		}
 	}
 
 	@Override
-	public String updatePassword(String oldPassword, String newPassword) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean updatePassword(User user) {
+		List<User> userList = findByName(user.getUsername());
+		if (userList.isEmpty()) {
+			return false;
+		} else {
+			User LoggedUser = userList.get(0);
+			LoggedUser.setPassword(user.getPassword());
+			boolean response = userRepository.save(LoggedUser) != null;
+			if (!response) {
+				return false;
+			}
+			return true;
+		}
 	}
 
 	@Override

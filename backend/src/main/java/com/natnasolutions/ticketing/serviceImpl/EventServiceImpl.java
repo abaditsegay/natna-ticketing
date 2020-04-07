@@ -19,18 +19,18 @@ public class EventServiceImpl implements EventService {
 	private EventRepository eventRepository;
 
 	@Override
-	public List<Event> getEvents() {
+	public List<Event> getAllEvents() {
 		return eventRepository.findAll();
 	}
 
 	@Override
-	public List<Event> getEventGroups(String eventType) {
-		return eventRepository.getCustomEvents(eventType);
+	public List<Event> getEventsByType(String eventType) {
+		return eventRepository.getEventsByType(eventType);
 	}
 
 	@Override
-	public Event registerEvent(Event event) {
-		return eventRepository.save(event);
+	public boolean registerEvent(Event event) {
+		return eventRepository.save(event) != null;
 	}
 
 	@Override
