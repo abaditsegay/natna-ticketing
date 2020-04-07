@@ -1,20 +1,14 @@
 package com.natnasolutions.ticketing.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -55,6 +49,6 @@ public class Owner extends BaseEntity<String> implements Serializable {
 	private String ownerStatus;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
-	List<Event> events;
+	private List<Event> events;
 
 }
