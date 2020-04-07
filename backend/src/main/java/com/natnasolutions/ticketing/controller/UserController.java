@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.natnasolutions.ticketing.model.User;
 import com.natnasolutions.ticketing.service.UserService;
+import com.natnasolutions.ticketing.util.EnConstants;
+import com.natnasolutions.ticketing.util.ResponseDetails;
 
 @RestController
 public class UserController {
@@ -27,18 +29,36 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping(path = "/user")
-	public List<User> getAllUsers() {
-		return userService.getAllUsers();
+	public ResponseDetails getAllUsers() {
+		List<User> userList = userService.getAllUsers();
+		if (userList.isEmpty()) {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, userList);
+		}
+
 	}
 
 	@PostMapping(path = "/user")
-	public HttpStatus insertUser(@RequestBody User user) {
-		return userService.addUser(user) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
+	public ResponseDetails createUser(@RequestBody User user) {
+		boolean response = userService.addUser(user);
+		if (response) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		}
+
 	}
 
 	@PutMapping(path = "/user")
-	public HttpStatus updateUser(@RequestBody User user) {
-		return userService.updateUser(user) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
+	public ResponseDetails updateUser(@RequestBody User user) {
+		boolean response = userService.updateUser(user);
+		if (response) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		}
+
 	}
 
 	@PatchMapping(path = "/user")
@@ -58,8 +78,14 @@ public class UserController {
 	}
 
 	@GetMapping(path = "user/username/{email}")
-	public List<User> getUsereByName(@PathVariable String name) {
-		return userService.findByName(name);
+	public ResponseDetails getUsereByName(@PathVariable String email) {
+		List<User> userList = userService.findByName(email);
+		if (userList.isEmpty()) {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, userList);
+		}
+
 	}
 
 	@GetMapping(path = "/user/login")
@@ -69,6 +95,7 @@ public class UserController {
 
 	@PostMapping(path = "/user/forgotpassword/{email}")
 	public String forgotPassword(@PathVariable String email) {
+		
 		return null;
 	}
 
