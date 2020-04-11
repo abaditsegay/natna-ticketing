@@ -12,18 +12,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "userProfile")
+@Table(name = "Profile")
 @EntityListeners(AuditingEntityListener.class)
-public class UserProfile extends BaseEntity<String> implements Serializable {
+public class Profile extends BaseEntity<String> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String type;
-	private String address;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String phonenumber;
 	private String city;
-	private String state;
-	private String country;
-	private String zipCode;
-	private String image;
-	private boolean status;
+	private String region;
 
 }

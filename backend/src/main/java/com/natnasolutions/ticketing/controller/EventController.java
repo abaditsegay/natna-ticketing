@@ -35,16 +35,6 @@ public class EventController {
 
 	}
 
-	@GetMapping("/event/{eventType}")
-	public ResponseDetails getEventsByType(@PathVariable("eventType") String eventType) {
-		List<Event> events = eventService.getEventsByType(eventType);
-		if (events.isEmpty()) {
-			return new ResponseDetails(EnConstants.RECORD_NOT_FOUND_CODE, EnConstants.RECORD_NOT_FOUND_MESSAGE);
-		} else {
-			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, events);
-		}
-	}
-
 	@PostMapping("/event")
 	public ResponseDetails createEvent(@RequestBody Event event) {
 		boolean response = eventService.registerEvent(event);
@@ -65,6 +55,16 @@ public class EventController {
 			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
 		}
 
+	}
+
+	@GetMapping("/event/{eventType}")
+	public ResponseDetails getEventsByType(@PathVariable("eventType") String eventType) {
+		List<Event> events = eventService.getEventsByType(eventType);
+		if (events.isEmpty()) {
+			return new ResponseDetails(EnConstants.RECORD_NOT_FOUND_CODE, EnConstants.RECORD_NOT_FOUND_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, events);
+		}
 	}
 
 	@GetMapping("/events/{eventType}/{city}/{date}/{searchText}")
