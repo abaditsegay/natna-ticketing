@@ -8,9 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,6 +17,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -27,6 +26,8 @@ import lombok.Data;
 @Table(name = "event")
 @EntityListeners(AuditingEntityListener.class)
 public class Event extends BaseEntity<String> implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "event_name")
 	private String eventName;
@@ -56,9 +57,11 @@ public class Event extends BaseEntity<String> implements Serializable {
 	private String imageIcon;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "event")
+	@JsonIgnore
 	private List<TicketCategory> categories;
+
 	private long ticketCateId;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "ticket_open_date")
 	private Date ticketOpenDate;
@@ -67,8 +70,11 @@ public class Event extends BaseEntity<String> implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "owner_Id")
+	@JsonIgnore
 	private Owner owner;
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "event")
+	@JsonIgnore
 	private List<Ticket> tickets;
 
 }

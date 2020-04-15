@@ -21,9 +21,9 @@ public interface UserService {
 
 	boolean signIn(User user);
 
-	String forgotPassword(String email);
+	boolean forgotPassword(String email);
 
-	String updatePassword(String oldPassword, String newPassword);
+	boolean updatePassword(User user);
 
 	List<User> getAllUsersByStatus(boolean status);
 

@@ -3,13 +3,12 @@ package com.natnasolutions.ticketing.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.natnasolutions.ticketing.model.User;
 import com.natnasolutions.ticketing.model.SubUser;
+import com.natnasolutions.ticketing.model.User;
 import com.natnasolutions.ticketing.repository.SubUserRepository;
 import com.natnasolutions.ticketing.repository.UserRepository;
 import com.natnasolutions.ticketing.service.SubUserService;

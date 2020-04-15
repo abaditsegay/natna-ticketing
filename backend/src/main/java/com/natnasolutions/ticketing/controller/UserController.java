@@ -94,18 +94,28 @@ public class UserController {
 	}
 
 	@PostMapping(path = "/user/forgotpassword/{email}")
-	public String forgotPassword(@PathVariable String email) {
-		
-		return null;
+	public ResponseDetails forgotPassword(@PathVariable String email) {
+		boolean response = userService.forgotPassword(email);
+		if (response) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		}
+
 	}
 
 	@PutMapping(path = "user/updatepassword")
-	public String updatePassword(@RequestBody User user) {
-		return null;
+	public ResponseDetails updatePassword(@RequestBody User user) {
+		boolean response = userService.updatePassword(user);
+		if (response) {
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
+		} else {
+			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
+		}
 	}
 
 	@GetMapping(path = "/user/getUsersByStatus/{status}")
-	List<User> getAllUsersByStatus(@PathVariable boolean status) {
+	public List<User> getAllUsersByStatus(@PathVariable boolean status) {
 		return null;
 	}
 
