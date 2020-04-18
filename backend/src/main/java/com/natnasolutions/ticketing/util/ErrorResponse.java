@@ -2,8 +2,6 @@ package com.natnasolutions.ticketing.util;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import lombok.Data;
 
 @Data
