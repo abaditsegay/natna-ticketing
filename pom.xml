@@ -15,7 +15,8 @@
     </parent>
 
   <modules>
-      <module>backend</module>
-      <module>frontend</module>
-    </modules>
+    <module>frontend</module>
+    <module>backend</module>
+  </modules>
+  
 </project>
