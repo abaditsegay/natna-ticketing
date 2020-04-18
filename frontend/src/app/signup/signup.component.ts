@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms'
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+
+
 import { SignUpService } from '../services/signup.service';
+import { SignUpItem } from '../models/signup-model';
+import { SignUpStatus } from '../models/create-status';
 
 
 @Component({
@@ -16,7 +24,8 @@ export class SignupComponent implements OnInit  {
   constructor(
     private location: Location, 
     private formBuilder: FormBuilder, 
-    private signUpService: SignUpService
+    private signUpService: SignUpService,
+    private activatedRoute: ActivatedRoute
     ){}
 
   ngOnInit(){
@@ -28,6 +37,9 @@ export class SignupComponent implements OnInit  {
   }
  
   signedIn = false;
+  signUpStatus: SignUpStatus;
+  registered: string = "";
+  signupMessage = "";
 
   signIn(signInItem) {
     console.log(signInItem);
@@ -42,22 +54,28 @@ export class SignupComponent implements OnInit  {
       "username": signUpItem.registerationEmail,
       "password": signUpItem.registerationPassword,
       "passwordConfirm": signUpItem.confirmRegisterationPassword,
-      "roleType":"Admin2" //default Role
+      "role":"USER" //default Role
     };
 
     this.signUpService.signUp(this.signUpData)
-      .subscribe(response => {
-        console.log(response);
-      })
-    console.log(signUpItem);
-    this.location.replaceState('');    
-    window.location.reload();
-  }
-}
+      .subscribe(data => { 
+        this.signUpStatus = data;
+        if( typeof(data) === typeof(this.signUpStatus)) {
+          if (this.signUpStatus.responseCode === '00') {
+            this.registered = "success";
+            this.signupMessage = "Successfully registered, please login";
+          } else {
+            this.registered = "failure";
+            this.signupMessage = "Unsuccessful, please try again!";
+          }
+        } else {
+            this.registered = "failure";
+            this.signupMessage = "Unsuccessful, please try again!";
+        }
+      });
 
-interface SignUpItem {
-  username: string,
-  password: string,
-  passwordConfirm: string,
-  roleType: string
-};
+      this.location.replaceState('');    
+    //window.location.reload();
+  }
+
+}

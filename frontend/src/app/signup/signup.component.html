@@ -46,6 +46,8 @@
                   <input type="text" name="registrationLastName" class="form-control" id="registrationLastName" placeholder="Last Name" ngModel>
                 </div>
               </div> -->
+              <p *ngIf="registered === 'success'" class="success-text">{{signupMessage}}</p>
+              <p *ngIf="registered === 'failure'" class="failure-text">{{signupMessage}}</p>
               <div class="form-group">
                 <label for="registerationEmail" class="col-sm-4 control-label">Email</label>
                 <div class="col-sm-8">

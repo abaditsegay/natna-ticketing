@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+
+import { SignUpStatus } from '../models/create-status';
+import { SignUpItem } from '../models/signup-model';
+import { map, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 const baseUrl: string = environment.baseUrl;
 const httpOptions = {
@@ -15,8 +20,19 @@ const httpOptions = {
 export class SignUpService {
   constructor(private httpClient: HttpClient) { }
 
-    public signUp(signUpItem) {
-      return this.httpClient.post(baseUrl + '/user', 
+    public signUp(signUpItem: SignUpItem) {
+      let resp = this.httpClient.post<SignUpStatus>(baseUrl + '/user', 
         JSON.stringify(signUpItem), httpOptions);
+
+        return resp.pipe(
+          map((response: SignUpStatus) => {
+            return response;
+          }), catchError(this.handleError)
+        );
+    }
+
+    private handleError(error: HttpErrorResponse) {
+      console.log(error.message);
+      return throwError("Data error, please try again");
     }
 }

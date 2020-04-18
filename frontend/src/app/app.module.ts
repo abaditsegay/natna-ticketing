@@ -26,8 +26,8 @@ import { TermsOfUseComponent } from './terms-of-use/terms-of-use.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { PurchasePolicyComponent } from './purchase-policy/purchase-policy.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import {CareersComponent } from './careers/careers.component';
-import {FaqComponent} from './faq/faq.component';
+import { CareersComponent } from './careers/careers.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
