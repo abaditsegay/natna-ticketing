@@ -57,6 +57,7 @@ export class SignupComponent implements OnInit  {
       "role":"USER" //default Role
     };
 
+  try {
     this.signUpService.signUp(this.signUpData)
       .subscribe(data => { 
         this.signUpStatus = data;
@@ -73,6 +74,10 @@ export class SignupComponent implements OnInit  {
             this.signupMessage = "Unsuccessful, please try again!";
         }
       });
+    } catch(error) {
+        this.registered = "failure";
+        this.signupMessage = "Unknow error ocurred, please try again!";
+    }
 
       this.location.replaceState('');    
     //window.location.reload();
