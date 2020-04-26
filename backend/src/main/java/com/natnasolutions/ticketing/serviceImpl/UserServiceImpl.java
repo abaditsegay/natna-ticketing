@@ -15,7 +15,7 @@ import com.natnasolutions.ticketing.repository.UserRepository;
 import com.natnasolutions.ticketing.service.RoleService;
 import com.natnasolutions.ticketing.service.UserService;
 
-@Service("userService")
+@Service
 @Transactional
 public class UserServiceImpl implements UserService {
 	private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);

@@ -32,7 +32,7 @@ public class RoleController {
 
 	@GetMapping(path = "/role")
 	public ResponseDetails getAllRoles() {
-		List<Role> roleList = roleService.getAllUserRoles();
+		List<Role> roleList = roleService.getAllRoles();
 		if (roleList.isEmpty()) {
 			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
 		} else {
@@ -43,7 +43,7 @@ public class RoleController {
 
 	@PostMapping(path = "/role")
 	public ResponseDetails createRole(@RequestBody @Valid Role role) {
-		boolean response = roleService.addUserRole(role);
+		boolean response = roleService.addRole(role);
 		if (response) {
 			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
 		} else {
@@ -54,7 +54,7 @@ public class RoleController {
 
 	@PutMapping(path = "/role")
 	public ResponseDetails updateRole(@RequestBody Role role) {
-		boolean response = roleService.updateUserRole(role);
+		boolean response = roleService.updateRole(role);
 		if (response) {
 			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
 		} else {

@@ -1,17 +1,29 @@
 package com.natnasolutions.ticketing.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.natnasolutions.ticketing.model.Associate;
 
 public interface AssociateService {
 
-	public Associate registerAssociate(Associate associate);
 	public List<Associate> getAllAssociates();
-	public Associate getAssociate(String businessName, String ownerName);
-	public void approveAssociate(String businessName, String ownerName);
-	public void rejectAssociate(String businessName, String ownerName);
-	
-	public void enableAssociate(String businessName, String ownerName);
-	public void disableAssociate(String businessName, String ownerName);
+
+	public boolean addAssociate(Associate associate);
+
+	public boolean updateAssociate(Associate associate);
+
+	public List<Associate> getAssociateById(Long id);
+
+	public boolean approveAssociateById(Long id);
+
+	public boolean rejectAssociateById(Long id);
+
+	public boolean enableAssociateById(Long id);
+
+	public boolean disableAssociateById(Long id);
+
+	public List<Associate> getAssociateByStatus(String status);
+
+	public List<Associate> getAssociateByApprovalStatus(String status);
 }

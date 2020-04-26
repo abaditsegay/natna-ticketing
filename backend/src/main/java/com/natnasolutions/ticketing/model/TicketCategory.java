@@ -19,9 +19,12 @@ import lombok.Data;
 @EntityListeners(AuditingEntityListener.class)
 public class TicketCategory extends BaseEntity<String> implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	@ManyToOne
 	@JoinColumn(name = "event_Id")
 	private Event event;
+
 	@Column(name = "category_name")
 	private String categoryName;
 

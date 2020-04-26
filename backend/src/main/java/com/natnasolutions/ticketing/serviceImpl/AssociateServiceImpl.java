@@ -1,6 +1,7 @@
 package com.natnasolutions.ticketing.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,48 +16,79 @@ import com.natnasolutions.ticketing.service.AssociateService;
 public class AssociateServiceImpl implements AssociateService {
 
 	@Autowired
-	private AssociateRepository repository;
-
-	@Override
-	public Associate registerAssociate(Associate associate) {
-
-		return repository.saveAndFlush(associate);
-	}
+	private AssociateRepository associaterepository;
 
 	@Override
 	public List<Associate> getAllAssociates() {
 
-		return repository.findAll();
+		return associaterepository.findAll();
 	}
 
 	@Override
-	public Associate getAssociate(String businessName, String ownerName) {
-
-		return repository.getAssociate(businessName, ownerName);
+	public boolean addAssociate(Associate associate) {
+		return associaterepository.save(associate) != null;
 	}
 
 	@Override
-	public void approveAssociate(String businessName, String ownerName) {
-
-		repository.approveAssociate(businessName, ownerName);
+	public boolean updateAssociate(Associate associate) {
+		return associaterepository.save(associate) != null;
 	}
 
 	@Override
-	public void rejectAssociate(String businessName, String ownerName) {
-
-		repository.rejectAssociate(businessName, ownerName);
+	public List<Associate> getAssociateById(Long id) {
+		return associaterepository.getAssociateByID(id);
 	}
 
 	@Override
-	public void enableAssociate(String businessName, String ownerName) {
-
-		repository.enableAssociate(businessName, ownerName);
+	public boolean approveAssociateById(Long id) {
+		int response = associaterepository.approveAssociate(id);
+		if (response > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
-	public void disableAssociate(String businessName, String ownerName) {
+	public boolean rejectAssociateById(Long id) {
+		int response = associaterepository.rejectAssociate(id);
+		if (response > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-		repository.disableAssociate(businessName, ownerName);
+	@Override
+	public boolean enableAssociateById(Long id) {
+		int response = associaterepository.enableAssociate(id);
+		if (response > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	@Override
+	public boolean disableAssociateById(Long id) {
+		int response = associaterepository.disableAssociate(id);
+		if (response > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	@Override
+	public List<Associate> getAssociateByStatus(String status) {
+		return associaterepository.getAssociateByStatus(status);
+	}
+
+	@Override
+	public List<Associate> getAssociateByApprovalStatus(String status) {
+		return associaterepository.getAssociateByApprovalStatus(status);
 	}
 
 }
