@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { SignUpService } from '../services/signup.service';
 import { SignUpItem } from '../models/signup-model';
-import { SignUpStatus } from '../models/create-status';
+import { ResponseStatus } from '../models/response-status';
 
 
 @Component({
@@ -37,7 +37,7 @@ export class SignupComponent implements OnInit  {
   }
  
   signedIn = false;
-  signUpStatus: SignUpStatus;
+  signUpStatus: ResponseStatus;
   registered: string = "";
   signupMessage = "";
 
