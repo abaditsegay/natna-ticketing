@@ -3,8 +3,8 @@ import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-event',
-  templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.css']
 })
 export class EventComponent {
 

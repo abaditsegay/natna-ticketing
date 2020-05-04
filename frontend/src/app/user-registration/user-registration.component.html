@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div class="modal fade" id="userRegistrationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog  modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header modal-header-color">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">User Registration</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row" style="align-items: center; display: flex;">
+            <div class="col-sm-12 col-md-12 col-lg-12 register-background">
+              <form class="form-horizontal" [formGroup]="formSignUp" (ngSubmit)="registerAccount(formSignUp.value)">
+                <p *ngIf="registered === 'success'" class="success-text">{{signupMessage}}</p>
+                <p *ngIf="registered === 'failure'" class="failure-text">{{signupMessage}}</p>
+                <div class="form-group">
+                  <label for="registerationEmail" class="col-sm-4 control-label">Email</label>
+                  <div class="col-sm-8">
+                    <input type="email" name="registerationEmail" class="form-control" id="registerationEmail" placeholder="Email" formControlName="registerationEmail">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="registerationPassword" class="col-sm-4 control-label">Password</label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" name="registerationPassword" id="registerationPassword" placeholder="Password" formControlName="registerationPassword">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="confirmRegisterationPassword" class="col-sm-4 control-label">Confirm Password</label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" name="confirmRegisterationPassword" id="confirmRegisterationPassword" placeholder="Password" formControlName="confirmRegisterationPassword">
+                  </div>
+                </div>
+                <div class="form-group" style="text-align: center;">
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>

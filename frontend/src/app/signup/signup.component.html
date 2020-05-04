@@ -9,17 +9,17 @@
       <div class="modal-body">
         <div class="row" style="align-items: center; display: flex;">
           <div class="col-md-5">
-            <form class="form-horizontal" #signInItem="ngForm" (ngSubmit)="signIn(signInItem.value)">
+            <form class="form-horizontal" [formGroup]="formSignIn" (ngSubmit)="signIn(formSignIn.value)">
               <div class="form-group">
                 <label for="signInEmailAddress" class="col-sm-4 control-label">Email</label>
                 <div class="col-sm-8">
-                  <input type="email" class="form-control" name="signInEmailAddress" id="signInEmailAddress" placeholder="Email" ngModel>
+                  <input type="email" class="form-control" name="signInEmailAddress" id="signInEmailAddress" placeholder="Email" formControlName="signInEmailAddress">
                 </div>
               </div>
               <div class="form-group">
                 <label for="signInPassword" class="col-sm-4 control-label">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" name="signInPassword" id="signInPassword" placeholder="Password" ngModel>
+                  <input type="password" class="form-control" name="signInPassword" id="signInPassword" placeholder="Password" formControlName="signInPassword">
                 </div>
               </div>
               <div class="form-group" style="text-align: center;">
@@ -33,7 +33,7 @@
             </form>
           </div>
           <div class="col-md-7 register-background">
-            <form class="form-horizontal" [formGroup]="form" (ngSubmit)="registerAccount(form.value)">
+            <form class="form-horizontal" [formGroup]="formSignUp" (ngSubmit)="registerAccount(formSignUp.value)">
               <!-- <div class="form-group">
                 <label for="registrationFirstName" class="col-sm-4 control-label">First Name </label>
                 <div class="col-sm-8">
@@ -51,19 +51,19 @@
               <div class="form-group">
                 <label for="registerationEmail" class="col-sm-4 control-label">Email</label>
                 <div class="col-sm-8">
-                  <input type="email" name="registerationEmail" class="form-control" id="registerationEmail" placeholder="Email" formControlName="registerationEmail">
+                  <input type="email" name="signUpRegisterationEmail" class="form-control" id="signUpRegisterationEmail" placeholder="Email" formControlName="signUpRegisterationEmail">
                 </div>
               </div>
               <div class="form-group">
                 <label for="registerationPassword" class="col-sm-4 control-label">Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" name="registerationPassword" id="registerationPassword" placeholder="Password" formControlName="registerationPassword">
+                  <input type="password" class="form-control" name="signUpRegisterationPassword" id="signUpRegisterationPassword" placeholder="Password" formControlName="signUpRegisterationPassword">
                 </div>
               </div>
               <div class="form-group">
                 <label for="confirmRegisterationPassword" class="col-sm-4 control-label">Confirm Password</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" name="confirmRegisterationPassword" id="confirmRegisterationPassword" placeholder="Password" formControlName="confirmRegisterationPassword">
+                  <input type="password" class="form-control" name="signUpConfirmRegisterationPassword" id="signUpConfirmRegisterationPassword" placeholder="Password" formControlName="signUpConfirmRegisterationPassword">
                 </div>
               </div>
               <!-- <div class="form-group">
