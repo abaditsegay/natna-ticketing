@@ -49,49 +49,6 @@
             </form>
           </div>
         </div>
-        
-          <div class="row paymen-option-box">
-          <div class="col-md-12">
-            <p>Bank details for Selling Event Tickets</p>
-            <form class="form-horizontal" [formGroup]="form" (ngSubmit)="addBankDetails(form.value)">
-              <div class="form-group">
-                <label for="fullName" class="col-sm-4 control-label">Full Name </label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="paymentOptionFullName" name="paymentOptionFullName" placeholder="Full Name" formControlName="paymentOptionFullName">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="bankName" class="col-sm-4 control-label">Bank Name</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="paymentOptionBankName" name="paymentOptionBankName" placeholder="Bank Name" formControlName="paymentOptionBankName">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="branch" class="col-sm-4 control-label">Branch Opened</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="paymentOptionBranch" name="paymentOptionBranch" placeholder="Branch Opened" formControlName="paymentOptionBranch">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="accountNumber" class="col-sm-4 control-label">Account Number</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="paymentOptionAccountNumber" name="paymentOptionAccountNumber" placeholder="Account Number" formControlName="paymentOptionAccountNumber">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="confirmAccountNumber" class="col-sm-4 control-label">Confirm Account Number</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="paymentOptionConfirmAccountNumber" name="paymentOptionConfirmAccountNumber" placeholder="Confirm Account Number" formControlName="paymentOptionConfirmAccountNumber">
-                </div>
-              </div>
-              <div class="form-group" style="text-align: center;">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" data-backdrop="static" data-toggle="modal" data-target="#paymentOptionModal" class="btn btn-default">Add</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
       </div>
       <div class="modal-footer">
         <!--<button type="button" class="btn btn-primary" data-dismiss="modal">sign In</button>-->

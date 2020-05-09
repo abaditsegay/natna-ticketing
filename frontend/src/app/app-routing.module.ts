@@ -1,3 +1,4 @@
+import { TicketComponent } from './ticket/ticket.component';
 import { FaqComponent } from './faq/faq.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -42,6 +43,10 @@ const routes : Routes = [
       {
         path: 'faq',
         component: FaqComponent
+      },
+      {
+        path: 'ticket',
+        component: TicketComponent
       },
       {
         path: '', 

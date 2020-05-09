@@ -152,7 +152,7 @@ export class AccountSettingsComponent  implements OnInit  {
       });
 
       this.location.replaceState('');    
-    window.location.reload();
+    // window.location.reload();
   }
 
   updateProfileByLocation(profile) {

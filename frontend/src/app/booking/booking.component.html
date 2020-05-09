@@ -1,0 +1,65 @@
+<!-- Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog  modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header modal-header-color">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Book your Ticket</h4>
+        </div>
+        <form class="form-horizontal" [formGroup]="form" (ngSubmit)="bookTicket(form.value)">
+            <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="account-setting-box">
+                         <div class="form-group">
+                          <label for="bookingfirstName" class="col-sm-4 control-label">First Name </label>
+                          <div class="col-sm-8">
+                              <input type="text" class="form-control" id="bookingfirstName" name="bookingfirstName" placeholder="First Name" formControlName="bookingfirstName">
+                          </div>
+                        </div>
+                          <div class="form-group">
+                              <label for="bookingLastName" class="col-sm-4 control-label">Last Name </label>
+                              <div class="col-sm-8">
+                              <input type="text" class="form-control" id="bookingLastName" name="bookingLastName" placeholder="Last Name" formControlName="bookingLastName">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="bookingEmail" class="col-sm-4 control-label">Email Address </label>
+                            <div class="col-sm-8">
+                            <input type="text" class="form-control" id="bookingEmail" name="bookingEmail" placeholder="Email Address" formControlName="bookingEmail">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="numberoftickets" class="col-sm-4 control-label">Number of Tickets </label>
+                          <div class="col-sm-8">
+                          <input type="text" class="form-control" id="numberoftickets" name="numberoftickets" placeholder="how many tickets" formControlName="numberoftickets">
+                          </div>
+                      </div> 
+                        <div class="form-group">
+                            <label for="ticketCategory" class="col-sm-4 control-label">Ticket category</label>
+                            <div class="col-sm-8">
+                            <select id="ticketCategory" name="ticketCategory" class="form-control" formControlName="ticketCategory">
+                             <!-- <option value="all" selected>All events</option>
+                              <option *ngFor="let region of listOfRegions; index as i" [value]="region">
+                                {{ region }}
+                              </option> -->
+                              <option value="all" selected>Category</option>
+                              <option value="vip">VIP</option>
+                              <option value="regular">Regular</option>
+                              <option value="reserved">Reserved Seating</option>
+                            </select>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#bookingModal">Book</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+              </div>
+        </form>
+
+      </div>
+    </div>
+</div>

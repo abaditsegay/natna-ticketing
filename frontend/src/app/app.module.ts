@@ -28,6 +28,8 @@ import { PurchasePolicyComponent } from './purchase-policy/purchase-policy.compo
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CareersComponent } from './careers/careers.component';
 import { FaqComponent } from './faq/faq.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { BookingComponent } from './booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { FaqComponent } from './faq/faq.component';
     PurchasePolicyComponent,
     ContactUsComponent,
     CareersComponent,
-    FaqComponent
+    FaqComponent,
+    TicketComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
