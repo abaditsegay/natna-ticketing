@@ -31,7 +31,6 @@ export class SignUpService {
     }
 
     private handleError(error: HttpErrorResponse) {
-      console.log(error.message);
-      return throwError("Data error, please try again");
+      return throwError('Unknown error occured, please try again');
     }
 }

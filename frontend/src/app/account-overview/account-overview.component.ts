@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggedInInfo } from '../models/loggedin.information';
 
 @Component({
   selector: 'account-overview',
@@ -7,25 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountOverviewComponent {
 
-  eventsYouMayLike = [
-    {
-      "name":"Concert",
-      "imagePath":"assets/images/wazema-concert.jpg",
-      "location":"Shire",
-      "date": "March 25, 2020"
-    },
-    {
-      "name":"Concert",
-      "imagePath":"assets/images/wazema-concert.jpg",
-      "location":"Alamata",
-      "date": "March 25, 2020"
-    },
-    {
-      "name":"Concert",
-      "imagePath":"assets/images/wazema-concert.jpg",
-      "location":"Adigrat",
-      "date": "March 25, 2020"
-    }
-]
+  signedIndRole: string;
+
+
+  setSignedInRole(loggedInInfo: LoggedInInfo) {
+    this.signedIndRole = loggedInInfo.signedInUserRole;
+  }
 
 }

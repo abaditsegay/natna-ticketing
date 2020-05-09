@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventComponent } from './event/event.component';
+import { EventComponent } from './events/events.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventTicketComponent } from './event-ticket/event-ticket.component';
 import { MylistingComponent } from './mylisting/mylisting.component';
@@ -28,6 +28,9 @@ import { PurchasePolicyComponent } from './purchase-policy/purchase-policy.compo
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { CareersComponent } from './careers/careers.component';
 import { FaqComponent } from './faq/faq.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { AssociateRegistrationComponent } from './associate-registration/associate-registration.component';
+import { EventOwnerRegistrationComponent } from './event-owner-registration/event-owner-registration.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { FaqComponent } from './faq/faq.component';
     PurchasePolicyComponent,
     ContactUsComponent,
     CareersComponent,
-    FaqComponent
+    FaqComponent,
+    UserRegistrationComponent,
+    AssociateRegistrationComponent,
+    EventOwnerRegistrationComponent
   ],
   imports: [
     BrowserModule,
