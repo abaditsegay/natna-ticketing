@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-import { CreateStatus } from '../models/create-status';
+import { ResponseStatus } from '../models/response-status';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { EventItem } from '../models/event-model';
@@ -21,11 +21,11 @@ export class EventRegistrationService {
   constructor(private httpClient: HttpClient) { }
 
     public createEvent(eventItem: EventItem) {
-      let resp = this.httpClient.post<CreateStatus>(baseUrl + '/event', 
+      let resp = this.httpClient.post<ResponseStatus>(baseUrl + '/event', 
         JSON.stringify(eventItem), httpOptions);
 
         return resp.pipe(
-          map((response: CreateStatus) => {
+          map((response: ResponseStatus) => {
             return response;
           }), catchError(this.handleError)
         );

@@ -5,12 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
-
 import { SignUpService } from '../services/signup-service';
 import { SignUpItem } from '../models/signup-model';
-import { CreateStatus } from '../models/create-status';
+import { ResponseStatus } from '../models/response-status';
 import { LoggedInInfo } from '../models/loggedin.information';
-import { UrlResolver } from '@angular/compiler';
 
 @Component({
   selector: 'service-signup',
@@ -26,7 +24,7 @@ export class SignupComponent implements OnInit  {
   formSignIn: FormGroup;
   signUpData: SignUpItem;
 
-  signUpStatus: CreateStatus;
+  signUpStatus: ResponseStatus;
   registered: string = "";
   signupMessage: string = "";
  
@@ -60,7 +58,7 @@ export class SignupComponent implements OnInit  {
   
     this.loggedInInfo.emit(loggedInInfoLocal);
   }
-
+ 
   signIn(signInItem) {
     //Call signIn REST API, if successful set signedIn to true and redirect to account overview page
     this.setSignInMessages("signedIn", "ADMIN", signInItem.signInEmailAddress);

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
-import { CreateStatus } from '../models/create-status';
+import { ResponseStatus } from '../models/response-status';
 import { SignUpItem } from '../models/signup-model';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -21,11 +21,10 @@ export class SignUpService {
   constructor(private httpClient: HttpClient) { }
 
     public signUp(signUpItem: SignUpItem) {
-      let resp = this.httpClient.post<CreateStatus>(baseUrl + '/user', 
-        JSON.stringify(signUpItem), httpOptions);
+      let resp = this.httpClient.post<ResponseStatus>(baseUrl + '/user', JSON.stringify(signUpItem), httpOptions);
 
         return resp.pipe(
-          map((response: CreateStatus) => {
+          map((response: ResponseStatus) => {
             return response;
           }), catchError(this.handleError)
         );

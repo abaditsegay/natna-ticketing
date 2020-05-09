@@ -1,4 +1,4 @@
- export interface CreateStatus {
+ export interface ResponseStatus {
     responseCode: string,
     responseMessage: string
     responseDetails: Object

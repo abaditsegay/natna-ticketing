@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { LoggedInInfo } from './models/loggedin.information';
 import { SearchCriteria } from './models/search-criteria';
 import { FormGroup, FormBuilder } from '@angular/forms';

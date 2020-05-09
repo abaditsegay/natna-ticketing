@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { EventRegistrationService } from '../services/event-registration-service';
-import { CreateStatus } from '../models/create-status';
+import { ResponseStatus } from '../models/response-status';
 import { EventItem } from '../models/event-model';
 
 
@@ -17,7 +17,7 @@ export class EventRegistrationComponent implements OnInit {
   
   eventRegistrationForm: FormGroup;
   eventData: EventItem;
-  createStatus: CreateStatus;
+  createStatus: ResponseStatus;
   created: string = "";
   createdMessage: string = "";
 

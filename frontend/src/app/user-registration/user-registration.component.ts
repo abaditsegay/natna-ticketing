@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { SignUpService } from '../services/signup-service';
 import { SignUpItem } from '../models/signup-model';
-import { CreateStatus } from '../models/create-status';
+import { ResponseStatus } from '../models/response-status';
 
 @Component({
   selector: 'app-user-registration',
@@ -31,7 +31,7 @@ export class UserRegistrationComponent implements OnInit  {
     });
   }
  
-  signUpStatus: CreateStatus;
+  signUpStatus: ResponseStatus;
   registered: string = "";
   signupMessage = "";
 
