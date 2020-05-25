@@ -29,22 +29,20 @@
 <!-- SideBar and Content row-->
 <div class="row">
   <!-- SideBar Column -->
-    <div class="col-sm-2">
-      <ul class="nav sidebar-nav">
-        <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#myTicketsModal">My Tickets</a></li>
-        <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#myListingModal">My Listings</a></li>
-        <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#accountSettingsModal">Account Setting</a></li>
-        <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#paymentOptionModal">Payment Options</a></li>
-        <!-- <li class="nav-divider"></li> -->
-        <div *ngIf="signedIndRole == 'ADMIN'">
-          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#associateApprovalModal">Associates Approval</a></li>
-          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventOwnerApprovalModal">Event Owner Approval</a></li>
-          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventApprovalModal">Event Approval</a></li>
-          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#userRegistrationModal">Add User</a></li>
-          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#registerAssociateModal">Register Associate</a></li>
-          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#registerEventOwnerModal">Register Event Owner</a></li>
-          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventRegistration">Register Event</a></li>
-        </div>
+    <div class="col-sm-2" >
+      <ul class="nav sidebar-nav sidebar-top-left" *ngIf="signInStatusFromChild">
+        <li *ngIf="signedIndRole == 'USER'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#myTicketsModal">My Tickets</a></li>
+        <li *ngIf="signedIndRole == 'EVENTOWNER-ADMIN'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#myListingModal">My Listings</a></li>
+        <li *ngIf="signedIndRole == 'USER' || signedIndRole == 'ASSOCIATE-ADMIN' || signedIndRole == 'EVENTOWNER-ADMIN' || signedIndRole == 'ADMIN'">
+          <a href="#" data-toggle="modal" data-backdrop="static" data-target="#accountSettingsModal">Account Setting</a>
+        </li>
+        <li *ngIf="signedIndRole == 'EVENTOWNER-ADMIN' || signedIndRole == 'ASSOCIATE-ADMIN'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#paymentOptionModal">Payment Options</a></li>
+        <li *ngIf="signedIndRole == 'EVENTOWNER-ADMIN'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventRegistration">Event Registeration</a></li>
+        <li *ngIf="signedIndRole == 'ADMIN'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventRegistration">Role Management</a></li>
+        <li *ngIf="signedIndRole == 'ADMIN'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#associateApprovalModal">Associate Management</a></li>
+        <li *ngIf="signedIndRole == 'ADMIN'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventOwnerApprovalModal">Event Owner Management</a></li>
+        <li *ngIf="signedIndRole == 'ADMIN'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventApprovalModal">Event Management</a></li>
+        <li *ngIf="signedIndRole == 'ADMIN' || signedIndRole == 'ASSOCIATE-ADMIN' || signedIndRole == 'EVENTOWNER-ADMIN'"><a href="#" data-toggle="modal" data-backdrop="static" data-target="#userRegistrationModal">User Management</a></li>
       </ul>
     </div>
   <!-- Content Column-->
@@ -102,6 +100,7 @@
     <app-terms-of-use></app-terms-of-use>
     <app-purchase-policy></app-purchase-policy>
     <app-user-registration></app-user-registration>
+    <event-owner-registration></event-owner-registration>
   </div>
   
   <div style="padding: 10px;"></div>
@@ -123,3 +122,4 @@
 </div>
 <!-- Footer Row-->
 </div>
+

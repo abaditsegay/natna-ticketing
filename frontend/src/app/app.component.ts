@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { LoggedInInfo } from './models/loggedin.information';
 import { SearchCriteria } from './models/search-criteria';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -6,7 +6,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   title = 'Natna Ticket System';

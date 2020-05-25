@@ -13,7 +13,7 @@ import { LoggedInInfo } from '../models/loggedin.information';
 @Component({
   selector: 'service-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 
 export class SignupComponent implements OnInit  {
