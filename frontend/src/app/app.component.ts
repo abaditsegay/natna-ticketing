@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@ang
 import { LoggedInInfo } from './models/loggedin.information';
 import { SearchCriteria } from './models/search-criteria';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
 
 @Component({
   selector: 'app-root',
@@ -41,5 +42,4 @@ export class AppComponent implements OnInit {
   searchEvents(searchCriteria) {
     console.log(searchCriteria);
   }
-
 }

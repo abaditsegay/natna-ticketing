@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'event-owner-registration',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventOwnerRegistrationComponent implements OnInit {
 
-  constructor() { }
+  eventOwnerOnboardingForm: FormGroup;
 
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit(){
+    this.eventOwnerOnboardingForm = this.formBuilder.group({
+      eventOwnerFirstName: this.formBuilder.control(''),
+      eventOwnerLastName: this.formBuilder.control(''),
+      eventOwnerAddress: this.formBuilder.control('')
+    });
   }
 
   onboardingEventOwner(eventOwnerItem) {
