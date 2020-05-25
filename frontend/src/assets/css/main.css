@@ -51,8 +51,11 @@
     text-align: center;
 }
 
-#sidebar-left-margin {
-    margin-left: 10px;
+.sidebar-top-left {
+    margin-left: 25px;
+    margin-top: 25px;
+    position: fixed;
+    left: 0
 }
 
 #profile-box {
@@ -69,7 +72,7 @@
 }
 
 .search-box {
-    margin: 25px; 
+    margin: 30px; 
 }
 
 .modal-header-color {

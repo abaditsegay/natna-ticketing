@@ -1,12 +1,14 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { LoggedInInfo } from './models/loggedin.information';
 import { SearchCriteria } from './models/search-criteria';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { SignupComponent } from './signup/signup.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   title = 'Natna Ticket System';
@@ -40,5 +42,4 @@ export class AppComponent implements OnInit {
   searchEvents(searchCriteria) {
     console.log(searchCriteria);
   }
-
 }

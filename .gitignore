@@ -37,6 +37,7 @@ frontend/chrome-profiler-events.json
 frontend/speed-measure-plugin.json
 frontend/npm-debug.log
 frontend/yarn-error.log
+frontend/.metadata/
 
 # IDE - VSCode
 frontend/.vscode/*

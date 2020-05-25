@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Injectable } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { SignUpService } from '../services/signup-service';
@@ -13,7 +13,7 @@ import { LoggedInInfo } from '../models/loggedin.information';
 @Component({
   selector: 'service-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 
 export class SignupComponent implements OnInit  {
@@ -27,6 +27,8 @@ export class SignupComponent implements OnInit  {
   signUpStatus: ResponseStatus;
   registered: string = "";
   signupMessage: string = "";
+
+  closeResult: string = "";
  
   constructor(
     private location: Location, 
@@ -108,10 +110,5 @@ export class SignupComponent implements OnInit  {
     this.location.replaceState('');    
     //window.location.reload();
   }
-
-  openModal() {
-      const modalRef = this.modalService.open(SignupComponent);
-      modalRef.componentInstance.user = "Test text";
-    }
 
 }
