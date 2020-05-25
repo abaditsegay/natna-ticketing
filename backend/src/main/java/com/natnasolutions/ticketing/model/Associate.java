@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -51,7 +53,11 @@ public class Associate extends BaseEntity<String> implements Serializable {
 	@Column(name = "associate_status")
 	private String associateStatus;
 
+	@Column(name = "associate_approval")
+	private String associateApprovalStatus;
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "associate")
+	@JsonIgnore
 	private List<Ticket> tickets;
 
 }

@@ -18,7 +18,7 @@ import lombok.Data;
 @Entity
 @Table(name = "owner")
 @EntityListeners(AuditingEntityListener.class)
-public class Owner extends BaseEntity<String> implements Serializable {
+public class EventOwner extends BaseEntity<String> implements Serializable {
 
 	@Column(name = "business_name")
 	private String businessName;

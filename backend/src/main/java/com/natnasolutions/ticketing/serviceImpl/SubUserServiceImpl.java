@@ -13,7 +13,7 @@ import com.natnasolutions.ticketing.repository.SubUserRepository;
 import com.natnasolutions.ticketing.repository.UserRepository;
 import com.natnasolutions.ticketing.service.SubUserService;
 
-@Service("subUserService")
+@Service
 @Transactional
 public class SubUserServiceImpl implements SubUserService {
 
@@ -26,7 +26,7 @@ public class SubUserServiceImpl implements SubUserService {
 	public boolean addSubUser(SubUser subUser) {
 		User user = new User();
 		user.setId((long) 1);
-		
+
 		subUser.setUser(user);
 
 		return subUserRepository.save(subUser) != null;
@@ -42,20 +42,8 @@ public class SubUserServiceImpl implements SubUserService {
 	}
 
 	@Override
-	public void deleteSubUser(Long id) {
-		subUserRepository.deleteById(id);
-
-	}
-
-	@Override
-	public Optional<SubUser> getSubUser(Long id) {
-		return subUserRepository.findById(id);
-	}
-
-	@Override
-	public List<SubUser> getUsereRoleByType(String roletype) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<SubUser> getSubUser(String email) {
+		return subUserRepository.getSubUserByEmail(email);
 	}
 
 }

@@ -33,6 +33,8 @@ public class SubUser extends BaseEntity<String> implements Serializable {
 
 	@Column(name = "phoneNumber", nullable = false)
 	private String phoneNumber;
+	
+	
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)

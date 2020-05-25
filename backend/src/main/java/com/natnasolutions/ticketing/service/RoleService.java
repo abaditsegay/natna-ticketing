@@ -7,11 +7,11 @@ import com.natnasolutions.ticketing.model.Role;
 
 public interface RoleService {
 
-	public List<Role> getAllUserRoles();
+	public List<Role> getAllRoles();
 
-	boolean addUserRole(Role userRole);
+	boolean addRole(Role userRole);
 
-	public boolean updateUserRole(Role userRole);
+	public boolean updateRole(Role userRole);
 
 	public void deleteUserRole(Long id);
 

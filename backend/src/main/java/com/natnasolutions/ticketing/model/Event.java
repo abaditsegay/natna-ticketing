@@ -71,7 +71,7 @@ public class Event extends BaseEntity<String> implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "owner_Id")
 	@JsonIgnore
-	private Owner owner;
+	private EventOwner owner;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "event")
 	@JsonIgnore

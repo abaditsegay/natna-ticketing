@@ -13,10 +13,6 @@ public interface SubUserService {
 
 	public boolean updateSubUser(SubUser subUser);
 
-	public void deleteSubUser(Long id);
-
-	public Optional<SubUser> getSubUser(Long id);
-
-	public List<SubUser> getUsereRoleByType(String roletype);
+	public List<SubUser> getSubUser(String email);
 
 }

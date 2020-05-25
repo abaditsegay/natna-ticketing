@@ -23,6 +23,17 @@
 
 	<dependencies>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
 		<!-- Web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -35,14 +46,21 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		<!-- spring security -->
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-security</artifactId> 
+		<!-- Spring Boot Actuator - monitoring and management purpose -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-actuator</artifactId> 
 			</dependency> -->
 
-		<!-- Spring Boot Actuator - monitoring and management purpose -->
+		<!-- Loggers -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+
+		<!-- asynchronous loggers -->
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>3.4.2</version>
 		</dependency>
 
 		<!-- Need this to generate the getter and setters -->
@@ -74,15 +92,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<!-- Log4j2 -->
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-		</dependency>
+		<!-- <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-api</artifactId> 
+			</dependency> -->
 
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-		</dependency>
+		<!-- <dependency> <groupId>org.apache.logging.log4j</groupId> <artifactId>log4j-core</artifactId> 
+			</dependency> -->
 
 		<!-- Jackson JSON Processor -->
 		<dependency>
@@ -97,6 +111,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -113,7 +128,6 @@
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
 		</dependency>
-
 
 	</dependencies>
 

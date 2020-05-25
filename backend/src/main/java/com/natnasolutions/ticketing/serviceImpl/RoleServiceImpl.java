@@ -11,42 +11,42 @@ import com.natnasolutions.ticketing.model.Role;
 import com.natnasolutions.ticketing.repository.RoleRepository;
 import com.natnasolutions.ticketing.service.RoleService;
 
-@Service("userRoleService")
+@Service
 @Transactional
 public class RoleServiceImpl implements RoleService {
 
 	@Autowired
-	private RoleRepository userRoleRepository;
+	private RoleRepository roleRepository;
 
-	public boolean addUserRole(Role userRole) {
-		return userRoleRepository.save(userRole) != null;
+	public boolean addRole(Role role) {
+		return roleRepository.save(role) != null;
 	}
 
-	public List<Role> getAllUserRoles() {
-		return userRoleRepository.findAll();
+	public List<Role> getAllRoles() {
+		return roleRepository.findAll();
 	}
 
 	@Override
-	public boolean updateUserRole(Role userRole) {
-		return userRoleRepository.save(userRole) != null;
+	public boolean updateRole(Role role) {
+		return roleRepository.save(role) != null;
 	}
 
 	@Override
 	public void deleteUserRole(Long id) {
-		userRoleRepository.deleteById(id);
+		roleRepository.deleteById(id);
 
 	}
 
 	@Override
 	public Optional<Role> getUserRole(Long id) {
-		return userRoleRepository.findById(id);
+		return roleRepository.findById(id);
 	}
 
 	@Override
 	public List<Role> getUsereRoleByType(String roletype) {
-		List<Role> userRoles = userRoleRepository.getUserRoles(roletype);
+		List<Role> roles = roleRepository.getUserRoles(roletype);
 
-		return userRoles;
+		return roles;
 
 	}
 

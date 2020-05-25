@@ -17,32 +17,33 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.natnasolutions.ticketing.model.SubUser;
-import com.natnasolutions.ticketing.service.SubUserService;
+import com.natnasolutions.ticketing.model.TicketCategory;
+import com.natnasolutions.ticketing.service.TicketCategoryService;
 import com.natnasolutions.ticketing.util.EnConstants;
 import com.natnasolutions.ticketing.util.ResponseDetails;
 
 @RestController
-public class SubUserController {
+public class TicketCategoryController {
 
-	private static final Logger logger = LogManager.getLogger(SubUserController.class);
+	private static final Logger logger = LogManager.getLogger(TicketCategoryController.class);
 
 	@Autowired
-	private SubUserService subUserService;
+	private TicketCategoryService ticketCategoryService;
 
-	@GetMapping(path = "/subuser")
-	public ResponseDetails getAllSubUsers() {
-		List<SubUser> subUserList = subUserService.getAllSubUsers();
-		if (subUserList.isEmpty()) {
+	@GetMapping(path = "/ticketcategory")
+	public ResponseDetails getAllTicketCategorys() {
+		List<TicketCategory> ticketCategoryList = ticketCategoryService.getAllTicketCategorys();
+		if (ticketCategoryList.isEmpty()) {
 			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
 		} else {
-			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, subUserList);
+			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, ticketCategoryList);
 		}
+
 	}
 
-	@PostMapping(path = "/subuser")
-	public ResponseDetails createSubUser(@RequestBody @Valid SubUser subUser) {
-		boolean response = subUserService.addSubUser(subUser);
+	@PostMapping(path = "/ticketcategory")
+	public ResponseDetails createTicketCategory(@RequestBody @Valid TicketCategory ticketCategory) {
+		boolean response = ticketCategoryService.addTicketCategory(ticketCategory);
 		if (response) {
 			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
 		} else {
@@ -51,24 +52,13 @@ public class SubUserController {
 
 	}
 
-	@PutMapping(path = "/subuser")
-	public ResponseDetails updateSubUser(@RequestBody SubUser subUser) {
-		boolean response = subUserService.updateSubUser(subUser);
+	@PutMapping(path = "/ticketcategory")
+	public ResponseDetails updateTicketCategory(@RequestBody TicketCategory ticketCategory) {
+		boolean response = ticketCategoryService.updateTicketCategory(ticketCategory);
 		if (response) {
 			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE);
 		} else {
 			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
-		}
-
-	}
-
-	@GetMapping(path = "/subuser/{email}")
-	public ResponseDetails getSubUserByEmail(@PathVariable String email) {
-		List<SubUser> subUserList = subUserService.getSubUser(email);
-		if (subUserList.isEmpty()) {
-			return new ResponseDetails(EnConstants.VALIDATION_FAILURE_CODE, EnConstants.VALIDATION_FAILURE_MESSAGE);
-		} else {
-			return new ResponseDetails(EnConstants.SUCCESS_CODE, EnConstants.SUCCESS_MESSAGE, subUserList);
 		}
 
 	}

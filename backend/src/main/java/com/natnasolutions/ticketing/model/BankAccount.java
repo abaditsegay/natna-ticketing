@@ -4,9 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -14,22 +13,22 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "ticket")
+@Table(name = "bankaccount")
 @EntityListeners(AuditingEntityListener.class)
-public class Ticket extends BaseEntity<String> implements Serializable {
-
+public class BankAccount extends BaseEntity<String> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private TicketCategory ticketCategory;
+	private String fullName;
 
-	private long ticketNumber;
+	private String bank;
 
-	@ManyToOne
-	@JoinColumn(name = "event_Id")
-	private Event event;
+	private String branch;
 
-	@ManyToOne
-	@JoinColumn(name = "associate_Id")
-	private Associate associate;
+	private String accountNumber;
+
+	@Transient
+	private String confirmAccountNumber;
+
+	private boolean status;
 
 }

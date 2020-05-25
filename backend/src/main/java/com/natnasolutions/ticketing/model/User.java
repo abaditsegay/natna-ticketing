@@ -53,7 +53,6 @@ public class User extends BaseEntity<String> implements Serializable {
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "UserAndRole", joinColumns = { @JoinColumn(name = "userId") }, inverseJoinColumns = {
 			@JoinColumn(name = "roleId") })
-	@JsonIgnore
 	private Set<Role> roles = new HashSet<>();
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
