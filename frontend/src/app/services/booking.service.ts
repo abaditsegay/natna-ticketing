@@ -28,11 +28,7 @@ responseStatus: ResponseStatus;
 $ticketInfo = new EventEmitter();
 ticketItem: TicketItem;
   constructor(private httpClient: HttpClient) { 
-    this.ticketItem=new TicketItem();
-    this.ticketItem.category= "";
-    this.ticketItem.eventDate= "";
-    this.ticketItem.ticketNumber= "";
-    this.ticketItem.eventTitle ="";
+    
   }
 
  

@@ -1,6 +1,6 @@
-export class TicketItem {
-    eventTitle: string;
-    ticketNumber: string;
-    category: string;
-    eventDate: string;
+export interface TicketItem {
+    eventTitle: string,
+    ticketNumber: string,
+    category: string,
+    eventDate: string
     }

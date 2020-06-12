@@ -1,0 +1,67 @@
+<!-- Modal -->
+<div class="modal fade" id="eventDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog  modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header modal-header-color">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Event Details</h4>
+        </div>
+        <form class="form-horizontal">
+            <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="account-setting-box">
+                         <div class="form-group">
+                            <label for="ticketCategory" class="col-sm-4 control-label"></label>
+                            <div class="col-sm-8">
+                            {{eventname}}
+                            </div>
+                        </div>
+                       
+                          <div class="form-group">
+                            <label for="ticketCategory" class="col-sm-4 control-label"></label>
+                            <div class="col-sm-8">
+                            {{eventLocation}}
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="ticketCategory" class="col-sm-4 control-label"></label>
+                            <div class="col-sm-8">
+                            {{eventDate}}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="ticketCategory" class="col-sm-4 control-label">List of Associates</label>
+                            <div class="col-sm-8">
+                            <select id="associatesList" name="associatesList" class="form-control" formControlName="associatesList" (change)="onAssociateChange()">
+                             <option *ngFor="let associate of associatesList"  [ngValue]= "associate">{{associate}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                         
+                          <div class="col-sm-8">
+                          {{phoneNumber}}
+                          </div>
+                       
+                        </div>
+                          <div class="form-group">
+                          
+                            <div class="col-sm-8">
+                            {{email}}
+                            </div>
+                          </div>
+                    </div>
+                      </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#bookingModal">Book</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+              </div>
+        </form>
+
+      </div>
+    </div>
+</div>

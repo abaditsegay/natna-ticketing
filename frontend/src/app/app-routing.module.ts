@@ -3,7 +3,7 @@ import { FaqComponent } from './faq/faq.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { EventComponent } from './event/event.component';
+import { EventComponent } from './events/events.component';
 import { SportsComponent } from './sports/sports.component';
 import { ConcertsComponent } from './concerts/concerts.component';
 import { TheatersComponent } from './theaters/theaters.component';

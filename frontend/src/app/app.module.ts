@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventComponent } from './event/event.component';
+import { EventComponent } from './events/events.component';
 import { SignupComponent } from './signup/signup.component';
 import { EventTicketComponent } from './event-ticket/event-ticket.component';
 import { MylistingComponent } from './mylisting/mylisting.component';
@@ -30,6 +30,14 @@ import { CareersComponent } from './careers/careers.component';
 import { FaqComponent } from './faq/faq.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { BookingComponent } from './booking/booking.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { AssociateRegistrationComponent } from './associate-registration/associate-registration.component';
+import { EventOwnerRegistrationComponent } from './event-owner-registration/event-owner-registration.component';
+import { EventDetailsComponent } from './event-details/event-details.component';
+import { RoleMgmtComponent } from './role-mgmt/role-mgmt.component';
+import { EventReviewComponent } from './event-review/event-review.component';
+import { AssociateReviewComponent } from './associate-review/associate-review.component';
+import { EventOwnerReviewComponent } from './event-owner-review/event-owner-review.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +66,15 @@ import { BookingComponent } from './booking/booking.component';
     CareersComponent,
     FaqComponent,
     TicketComponent,
-    BookingComponent
+    BookingComponent,
+    UserRegistrationComponent,
+    AssociateRegistrationComponent,
+    EventOwnerRegistrationComponent,
+    EventDetailsComponent,
+    RoleMgmtComponent,
+    EventReviewComponent,
+    AssociateReviewComponent,
+    EventOwnerReviewComponent
   ],
   imports: [
     BrowserModule,

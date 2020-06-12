@@ -1,15 +1,20 @@
 <div class="row" style="text-align: center;letter-spacing: 15px;"><h3>Account Overview</h3></div>
 <div class="jumbotron">
-    <h2>Sell your Tickets on NatnaTickets</h2>
-    <p class="lead">The safest way to sell your Tickets. <strong>Only with NatnaTickets</strong></p>
+    <h2>Sell your Tickets on NatnaEvents</h2>
+    <blockquote>
+        <p class="lead text-success">The safest way to sell your Tickets.</p>
+    </blockquote>
     <hr class="my-4">
     <p>Sell your tickets in a safe and simple way, and instantly reach millions of fans.
     If you decide to sell your ticket in NatnaTickets for the first time, it would take from 24 to 48 hours to start your tikcet selling</p>
     <p class="lead">
-      <a class="btn btn-success btn-lg" href="#" data-toggle="modal" data-backdrop="static" data-target="#eventRegistration" role="button">Sell Your Tickets</a>
+      <a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-backdrop="static" data-target="#eventRegistration" role="button">Sell Your Tickets</a>
+    </p>
+    <p class="lead" *ngIf="signedIndRole == 'ADMIN'">
+        <a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-backdrop="static" data-target="#eventRegistration" role="button">Create Event</a>
     </p>
 
-    <div class="row" style="text-align: center;letter-spacing: 5px;"><h4>Events we think you love</h4></div>
+    <!-- <div class="row" style="text-align: center;letter-spacing: 5px;"><h4>Events we think you love</h4></div>
     <div style="padding: 10px;"></div>
     <div class="row">
         <div *ngFor = " let event of eventsYouMayLike; index as i" class="col-lg-4">
@@ -31,4 +36,4 @@
             </div>
         </div>
     </div>
-  </div>
+  </div> -->

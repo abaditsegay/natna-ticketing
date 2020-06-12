@@ -1,6 +1,6 @@
 
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
@@ -15,14 +15,16 @@ import { ResponseStatus } from '../models/response-status';
   styleUrls: ['./booking.component.css']
 })
 export class BookingComponent implements OnInit  {
+  @Output() public ticketItem: EventEmitter<TicketItem> = new EventEmitter();
   form: FormGroup;
   bookingData: BookingItem;
-  ticketItem: TicketItem;
+  
   constructor(
     private location: Location, 
     private formBuilder: FormBuilder, 
     private bookingService: BookingService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
     ){}
   ngOnInit(){
     this.form = this.formBuilder.group({
@@ -31,13 +33,21 @@ export class BookingComponent implements OnInit  {
       bookingEmail: this.formBuilder.control(''),
       numberoftickets: this.formBuilder.control(''),
       ticketCategory: this.formBuilder.control('')
+      
     });
   }
 
   updateStatus: ResponseStatus;
-  registered: string = "";
-  signupMessage = "";
-
+ 
+  ticketItems(bookingItem: BookingItem){
+    let ticketItems: TicketItem = {
+      "ticketNumber": bookingItem.firstName,
+      "category": bookingItem.ticketCategory,
+      "eventTitle": bookingItem.firstName,
+      "eventDate" : bookingItem.lastName
+    };
+    this.ticketItem.emit(ticketItems);
+  }
   bookTicket(book) {
     this.bookingData = {
       "firstName": book.bookingfirstName,
@@ -46,26 +56,9 @@ export class BookingComponent implements OnInit  {
       "numberoftickets": book.numberoftickets,
       "ticketCategory": book.ticketCategory
     };
-
-    this.bookingService.bookTicket(this.bookingData)
-      .subscribe(data => { 
-        this.updateStatus = data;
-        if( typeof(data) === typeof(this.updateStatus)) {
-          if (this.updateStatus.responseCode === '00') {
-            this.registered = "success";
-            this.signupMessage = "Successfully registered, please login";
-          } else {
-            this.registered = "failure";
-            this.signupMessage = "Unsuccessful, please try again!";
-          }
-        } else {
-            this.registered = "failure";
-            this.signupMessage = "Unsuccessful, please try again!";
-        }
-        
-      });
-      this.location.replaceState('/ticket');  
-      window.location.reload();
+    this.ticketItems(this.bookingData);
+    this.router.navigateByUrl('/ticket');  
   }
 
+ 
 }

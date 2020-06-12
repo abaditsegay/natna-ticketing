@@ -17,8 +17,8 @@
                   <li><a routerLink="/theaters">Theater</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" data-backdrop="static" data-toggle="modal" *ngIf="!signedIn" data-target="#signUpModal">Sign in/Register</a></li>
-                <li><a href="#" data-backdrop="static" data-toggle="modal" *ngIf="signedIn" data-target="#signUpModal">Sign out</a></li>
+                <li><a href="#" data-backdrop="static" data-toggle="modal" *ngIf="!signInStatusFromChild" data-target="#signUpModal">Sign in/Register</a></li>
+                <li><a href="#" (click)="signOut()" *ngIf="signInStatusFromChild">Sign out ({{username}})</a></li>
               </ul>
           </div>
           <!-- /.nav-collapse -->
@@ -31,26 +31,32 @@
   <!-- SideBar Column -->
     <div class="col-sm-2">
       <ul class="nav sidebar-nav">
+        <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#roleMgmtModal">Manage Roles</a></li>
         <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#myTicketsModal">My Tickets</a></li>
         <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#myListingModal">My Listings</a></li>
-        <li class="nav-divider"></li>
         <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#accountSettingsModal">Account Setting</a></li>
         <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#paymentOptionModal">Payment Options</a></li>
-        <li class="nav-divider"></li>
-        <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#associateApprovalModal">Associates Approval</a></li>
-        <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventOwnerApprovalModal">Event Owner Approval</a></li>
-        <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventApprovalModal">Event Approval</a></li>
+        <!-- <li class="nav-divider"></li> -->
+        <div *ngIf="signedIndRole == 'ADMIN'">
+          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#associateApprovalModal">Associates Approval</a></li>
+          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventOwnerApprovalModal">Event Owner Approval</a></li>
+          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventApprovalModal">Event Approval</a></li>
+          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#userRegistrationModal">Add User</a></li>
+          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#registerAssociateModal">Register Associate</a></li>
+          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#registerEventOwnerModal">Register Event Owner</a></li>
+          <li><a href="#" data-toggle="modal" data-backdrop="static" data-target="#eventRegistration">Register Event</a></li>
+        </div>
       </ul>
     </div>
   <!-- Content Column-->
   <div class="col-lg-10">
     <div class="row search-box">
-        <form class="form-group" #searchCriteria="ngForm" (ngSubmit)="searchEvents(searchCriteria.value)">
+        <form class="form-group" [formGroup]="formSearch" (ngSubmit)="searchEvents(formSearch.value)">
           <div class="col-lg-3">
-            <input type="text" class="form-control" name="searchText" placeholder="Search..." ngModel>
+            <input type="text" class="form-control" name="searchText" placeholder="Search..." formControlName="searchText">
           </div>
           <div class="col-lg-2">
-            <select id="selectedCity" name="selectedCity" class="form-control" ngModel>
+            <select id="selectedCity" name="selectedCity" class="form-control" formControlName="selectedCity">
               <option value="all" selected>All Cities</option>
               <option value="alamata">Alamata</option>
               <option value="adigrat">Adigrat</option>
@@ -58,7 +64,7 @@
             </select> 
           </div>
           <div class="col-lg-2">
-            <select id="event" name="eventType" class="form-control" ngModel>
+            <select id="event" name="searchEventType" class="form-control" formControlName="searchEventType">
               <option value="all" selected>All events</option>
               <option value="sports">Sports</option>
               <option value="concerts">Concerts</option>
@@ -67,7 +73,7 @@
         </div>
         <div class="col-lg-2">
           <div class='input-group date' id='datetimepicker1'>
-            <input type='text' class="form-control" name="eventDate" ngModel/>
+            <input type='text' class="form-control" name="searchEventDate" formControlName="searchEventDate"/>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -80,7 +86,7 @@
     </div>
   <div class="row">
     <router-outlet style="text-align: center;"></router-outlet>
-    <service-signup></service-signup>
+    <service-signup (loggedInInfo)="setSignInMessages($event)"></service-signup>
     <event-ticket></event-ticket>
     <event-mylisting></event-mylisting>
     <event-payment-option></event-payment-option>
@@ -98,8 +104,15 @@
     <app-purchase-policy></app-purchase-policy>
     <app-ticket></app-ticket>
     <app-booking></app-booking>
-
+    <app-event-details></app-event-details>
+    <app-role-mgmt></app-role-mgmt>
+    <app-user-registration></app-user-registration>
+    <app-associate-review></app-associate-review>
+    <app-event-review></app-event-review>
+    <app-event-owner-review></app-event-owner-review>
+  
   </div>
+  
   <div style="padding: 10px;"></div>
   <div class="row">
     <div id="footer">
